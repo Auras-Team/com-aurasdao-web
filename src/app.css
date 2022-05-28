@@ -1,4 +1,39 @@
-/* Write your global styles here, in PostCSS syntax */
+@font-face {
+	font-family: raleway;
+	font-weight: 300;
+	src: url('/font/raleway-light.ttf');
+}
+@font-face {
+	font-family: raleway;
+	font-weight: 400;
+	src: url('/font/raleway-regular.ttf');
+}
+@font-face {
+	font-family: raleway;
+	font-weight: 500;
+	src: url('/font/raleway-medium.ttf');
+}
+@font-face {
+	font-family: roboto-mono;
+	font-weight: 300;
+	src: url('/font/roboto-mono-light.ttf');
+}
+@font-face {
+	font-family: roboto-mono;
+	font-weight: 500;
+	src: url('/font/roboto-mono-medium.ttf');
+}
+@font-face {
+	font-family: roboto-slab;
+	font-weight: 300;
+	src: url('/font/roboto-slab-light.ttf');
+}
+@font-face {
+	font-family: roboto-slab;
+	font-weight: 500;
+	src: url('/font/roboto-slab-medium.ttf');
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
