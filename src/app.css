@@ -89,12 +89,11 @@ body {
 
 .navi {
 	width: 25vw;
-	height: 12vh;
+	height: 14vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background-color: peru;
 }
 
 .navi-lt {
@@ -116,6 +115,16 @@ body {
 	right: 0;
 	bottom: 0;
 	position: absolute;
+}
+
+.navi-link {
+	font-size: 2.25rem;
+	line-height: 2.5rem;
+	transition: all 0.1s ease-in-out;
+}
+.navi-link:hover {
+	font-size: 2rem;
+	line-height: 2.5rem;
 }
 
 @media all and (orientation: portrait) {
