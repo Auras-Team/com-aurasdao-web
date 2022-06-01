@@ -39,33 +39,16 @@
 </div>
 <div class="box box-size box-navi">
 	<div class="navi navi-lt">
-		{#if tokenPath}
-			<a href="/" class="navi-link font-light opacity-75">home</a>
-		{:else}
-			<a href="/token" class="navi-link font-light opacity-75">mint</a>
-		{/if}
+		<a href="/token" class="navi-link font-light opacity-75">mint</a>
 	</div>
 	<div class="navi navi-rt">
-		{#if infoPath}
-			<a href="/" class="navi-link font-light opacity-75">home</a>
-		{:else}
-			<a href="/info" class="navi-link font-light opacity-75">info</a>
-		{/if}
+		<a href="/" class="navi-link font-light opacity-75">info</a>
 	</div>
 	<div class="navi navi-lb">
-		{#if roadmapPath}
-			<a href="/" class="navi-link font-light opacity-75">home</a>
-		{:else}
-			<a href="/roadmap" class="navi-link font-light opacity-75">roadmap</a>
-		{/if}
+		<a href="/info" class="navi-link font-light opacity-75">roadmap</a>
 	</div>
 	<div class="navi navi-rb">
-		{#if storyPath}
-			<a href="/" class="navi-link font-light opacity-75">home</a>
-		{:else}
-			<a href="/story" class="navi-link font-light opacity-75">story</a>
-		{/if}
-		<p>{url}</p>
+		<a href="/about" class="navi-link font-light opacity-75">story</a>
 	</div>
 </div>
 
