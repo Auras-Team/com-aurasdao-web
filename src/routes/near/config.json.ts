@@ -4,7 +4,6 @@ export const get = async (): Promise<unknown> => {
 	try {
 		const cfg: NearConfig = {
 			appId: process.env['APP_ID'],
-			appUrl: process.env['APP_URL'],
 			network: process.env['NEAR_NETWORK'],
 			nodeUrl: process.env['NEAR_NODE_URL'],
 			walletUrl: process.env['NEAR_WALLET_URL'],

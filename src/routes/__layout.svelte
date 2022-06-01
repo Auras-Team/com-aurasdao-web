@@ -6,7 +6,7 @@
 
 	import PageTransition from '$lib/part/page-transition.svelte';
 
-	export const load = async ({ fetch, url }: { fetch: Fetch; url: string }) => {
+	export const load = async ({ fetch }: { fetch: Fetch }) => {
 		if (browser && typeof window.Buffer === 'undefined') {
 			window.Buffer = Buffer;
 		}
@@ -14,7 +14,7 @@
 		await nearWallet.connect(getConfig());
 		console.log(`load:near:active:`, nearWallet.isSignedIn());
 		console.log(`load:near:account:`, nearWallet.getAccountId());
-		return { url };
+		return {};
 	};
 </script>
 
@@ -22,8 +22,6 @@
 	import { page } from '$app/stores';
 
 	import '../app.css';
-
-	export let url = '';
 
 	$: tokenPath = $page.routeId && $page.routeId.includes('token');
 	$: infoPath = $page.routeId && $page.routeId.includes('info');

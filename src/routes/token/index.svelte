@@ -2,6 +2,7 @@
 	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/env';
 	import { fade } from 'svelte/transition';
+	import { page } from '$app/stores';
 
 	import { nearWallet } from '$lib/store/near-wallet';
 	import { swapTransition } from '$lib/utility/swap-stores';
@@ -57,7 +58,7 @@
 			class="btn btn-slate w-full"
 			on:click={async () => {
 				console.log('requestSignIn');
-				await nearWallet.requestSignIn('/token', ['nft_mint']);
+				await nearWallet.requestSignIn(`${$page.url}`, ['nft_mint']);
 			}}
 		>
 			connect

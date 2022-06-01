@@ -14,7 +14,6 @@ const walletTypeKey = 'arc:near:wallet:type';
 
 const nearConfigDefault = {
 	appId: '',
-	appUrl: '',
 	network: '',
 	nodeUrl: '',
 	walletUrl: '',
@@ -28,7 +27,6 @@ const connection: Writable<Readonly<WalletConnection | null>> = writable(null);
 
 export interface NearConfig {
 	appId: string | undefined;
-	appUrl: string | undefined;
 	network: string | undefined;
 	nodeUrl: string | undefined;
 	walletUrl: string | undefined;
@@ -155,8 +153,8 @@ export const requestSignIn = async (path: string, methods: string[]): Promise<vo
 		conn.requestSignIn({
 			contractId: cfg.appId,
 			methodNames: methods,
-			successUrl: `${cfg.appUrl}${path}`,
-			failureUrl: `${cfg.appUrl}${path}`
+			successUrl: `${path}`,
+			failureUrl: `${path}`
 		});
 	}
 };
@@ -165,7 +163,7 @@ export const connect = async (config: NearConfig): Promise<WalletConnection | nu
 	let data: WalletConnection | null = null;
 	try {
 		// Note: Implement a better config validator
-		if (config && config.appUrl && config.appUrl.length > 0) {
+		if (config && config.nodeUrl && config.nodeUrl.length > 0) {
 			const conn = await nearConnect({
 				headers: {},
 				keyStore: new keyStores.BrowserLocalStorageKeyStore(),
