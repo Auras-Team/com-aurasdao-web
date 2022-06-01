@@ -2,10 +2,16 @@
 	import { Buffer } from 'buffer';
 	import { browser } from '$app/env';
 
-	export const load = async () => {
+	import { getConfig, loadNearConfig, nearWallet } from '$lib/store/near-wallet';
+
+	export const load = async ({ fetch }: { fetch: Fetch }) => {
 		if (browser && typeof window.Buffer === 'undefined') {
 			window.Buffer = Buffer;
 		}
+		await loadNearConfig(fetch);
+		await nearWallet.connect(getConfig());
+		console.log(`load:near:active:`, nearWallet.isSignedIn());
+		console.log(`load:near:account:`, nearWallet.getAccountId());
 		return {};
 	};
 </script>

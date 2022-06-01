@@ -134,28 +134,29 @@ export const signOut = async (): Promise<boolean> => {
 	return false;
 };
 
-export const requestSignIn = async (): Promise<void> => {
+export const requestSignIn = async (path: string, methods: string[]): Promise<void> => {
 	let conn = get(connection);
 	if (conn == null) {
 		const cfg = getConfig();
 		conn = await connect(cfg);
 	}
 	if (conn == null) {
+		console.log(`near:wallet:requestSignIn:conection:is_null`);
 		return;
 	}
 	if (conn.isSignedIn()) {
 		conn.signOut();
 	}
 	const cfg = getConfig();
-	// Note: Implement a better config validator
-	if (cfg && cfg.appId && cfg.appId.length > 0) {
+	if (cfg != null && cfg.appId != null && cfg.appId.length > 0) {
+		console.log(cfg);
 		console.log(conn);
 		// TODO: Best practice, method names
 		conn.requestSignIn({
 			contractId: cfg.appId,
-			methodNames: [],
-			successUrl: `${cfg.appUrl}/near/login`,
-			failureUrl: `${cfg.appUrl}/near/login`
+			methodNames: methods,
+			successUrl: `${cfg.appUrl}${path}`,
+			failureUrl: `${cfg.appUrl}${path}`
 		});
 	}
 };
