@@ -40,18 +40,21 @@
 			unsubState = null;
 		}
 	});
+
+	$: account = nearWallet.getAccountId();
 </script>
 
 {#if $state == State.Loading}
 	<div on:outroend={swapper.onOutro} transition:fade|local={{ duration: 120 }} />
 {:else if $state == State.Guest}
 	<div
+		class="pointer-input w-full"
 		on:outroend={swapper.onOutro}
 		transition:fade|local={{ duration: 120 }}
-		class="pointer-input"
 	>
 		<h1 class="text-6xl font-light py-6 opacity-75">guest</h1>
 		<button
+			class="btn btn-slate w-full"
 			on:click={async () => {
 				console.log('requestSignIn');
 				await nearWallet.requestSignIn('/token', ['nft_mint']);
@@ -61,17 +64,29 @@
 		</button>
 	</div>
 {:else if $state == State.User}
-	<h1
+	<div
+		class="pointer-input w-full"
 		on:outroend={swapper.onOutro}
 		transition:fade|local={{ duration: 120 }}
-		class="text-6xl font-light py-6 opacity-75"
 	>
-		user
-	</h1>
+		<h1 class="text-6xl font-light py-6 opacity-75">user</h1>
+		<button class="btn btn-slate w-full">{account}</button>
+	</div>
 {/if}
 
 <style>
 	.pointer-input {
 		pointer-events: all;
+	}
+	.btn {
+		@apply py-2 px-2 rounded;
+	}
+	.btn-slate {
+		@apply bg-slate-50 bg-opacity-20;
+		transition: all 0.1s ease-in-out;
+	}
+	.btn-slate:hover {
+		@apply bg-opacity-30;
+		transform: scale(0.99);
 	}
 </style>
