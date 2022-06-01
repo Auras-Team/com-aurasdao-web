@@ -1,3 +1,15 @@
+<script lang="ts" context="module">
+	import { Buffer } from 'buffer';
+	import { browser } from '$app/env';
+
+	export const load = async () => {
+		if (browser && typeof window.Buffer === 'undefined') {
+			window.Buffer = Buffer;
+		}
+		return {};
+	};
+</script>
+
 <script>
 	import { page } from '$app/stores';
 
