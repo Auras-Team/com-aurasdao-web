@@ -4,7 +4,9 @@
 
 	import { getConfig, loadNearConfig, nearWallet } from '$lib/store/near-wallet';
 
-	export const load = async ({ fetch }: { fetch: Fetch }) => {
+	import PageTransition from '$lib/part/page-transition.svelte';
+
+	export const load = async ({ fetch, url }: { fetch: Fetch; url: string }) => {
 		if (browser && typeof window.Buffer === 'undefined') {
 			window.Buffer = Buffer;
 		}
@@ -12,7 +14,7 @@
 		await nearWallet.connect(getConfig());
 		console.log(`load:near:active:`, nearWallet.isSignedIn());
 		console.log(`load:near:account:`, nearWallet.getAccountId());
-		return {};
+		return { url };
 	};
 </script>
 
@@ -20,6 +22,8 @@
 	import { page } from '$app/stores';
 
 	import '../app.css';
+
+	export let url = '';
 
 	$: tokenPath = $page.routeId && $page.routeId.includes('token');
 	$: infoPath = $page.routeId && $page.routeId.includes('info');
@@ -61,11 +65,10 @@
 		{:else}
 			<a href="/story" class="navi-link font-light opacity-75">story</a>
 		{/if}
+		<p>{url}</p>
 	</div>
 </div>
 
-<div class="box box-size box-content">
-	<div class="flex flex-col items-center justify-center py-16 pb-32">
-		<slot />
-	</div>
-</div>
+<PageTransition url={$page.url.href}>
+	<slot />
+</PageTransition>
