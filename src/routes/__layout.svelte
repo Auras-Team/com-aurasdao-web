@@ -40,13 +40,13 @@
 		<a href="/token" class="navi-link font-light opacity-75">mint</a>
 	</div>
 	<div class="navi navi-rt">
-		<a href="/" class="navi-link font-light opacity-75">info</a>
+		<a href="/" class="navi-link font-light opacity-75">story</a>
 	</div>
 	<div class="navi navi-lb">
-		<a href="/info" class="navi-link font-light opacity-75">roadmap</a>
+		<a href="/roadmap" class="navi-link font-light opacity-75">roadmap</a>
 	</div>
 	<div class="navi navi-rb">
-		<a href="/about" class="navi-link font-light opacity-75">story</a>
+		<a href="/info" class="navi-link font-light opacity-75">info</a>
 	</div>
 </div>
 

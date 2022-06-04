@@ -6,7 +6,7 @@
 <div class="box box-size box-content">
 	{#key url}
 		<div
-			class="flex flex-col items-center justify-center text-center w-4/12 max-w-md py-16 pb-32"
+			class="flex flex-col items-center justify-center text-center w-6/12 h-3/4"
 			in:fly|local={{ x: -5, duration: 500, delay: 500 }}
 		>
 			<slot />
