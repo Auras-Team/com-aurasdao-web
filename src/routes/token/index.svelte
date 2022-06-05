@@ -9,7 +9,7 @@
 	import { nearWallet } from '$lib/store/near-wallet';
 	import { swapTransition } from '$lib/utility/swap-stores';
 
-	import TokenList from '$lib/part/token-list.svelte';
+	import TokenMint from '$lib/part/token-mint.svelte';
 
 	let account: string | null = null;
 
@@ -73,6 +73,6 @@
 		on:outroend={swapper.onOutro}
 		transition:fade|local={{ duration: 120 }}
 	>
-		<TokenList {account} />
+		<TokenMint {account} />
 	</div>
 {/if}
