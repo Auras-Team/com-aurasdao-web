@@ -1,3 +1,23 @@
+<script lang="ts" context="module">
+	import { Buffer } from 'buffer';
+	import { browser } from '$app/env';
+
+	import { getConfig, loadNearConfig, nearWallet } from '$lib/store/near-wallet';
+
+	import PageTransition from '$lib/part/page-transition.svelte';
+
+	export const load = async ({ fetch }: { fetch: Fetch }) => {
+		if (browser && typeof window.Buffer === 'undefined') {
+			window.Buffer = Buffer;
+		}
+		await loadNearConfig(fetch);
+		await nearWallet.connect(getConfig());
+		console.log(`load:near:active:`, nearWallet.isSignedIn());
+		console.log(`load:near:account:`, nearWallet.getAccountId());
+		return {};
+	};
+</script>
+
 <script>
 	import { page } from '$app/stores';
 
@@ -17,37 +37,19 @@
 </div>
 <div class="box box-size box-navi">
 	<div class="navi navi-lt">
-		{#if tokenPath}
-			<a href="/" class="text-2xl font-light opacity-75">home</a>
-		{:else}
-			<a href="/token" class="text-2xl font-light opacity-75">mint</a>
-		{/if}
+		<a href="/token" class="navi-link font-light opacity-75">mint</a>
 	</div>
 	<div class="navi navi-rt">
-		{#if infoPath}
-			<a href="/" class="text-2xl font-light opacity-75">home</a>
-		{:else}
-			<a href="/info" class="text-2xl font-light opacity-75">info</a>
-		{/if}
+		<a href="/" class="navi-link font-light opacity-75">story</a>
 	</div>
 	<div class="navi navi-lb">
-		{#if roadmapPath}
-			<a href="/" class="text-2xl font-light opacity-75">home</a>
-		{:else}
-			<a href="/roadmap" class="text-2xl font-light opacity-75">roadmap</a>
-		{/if}
+		<a href="/roadmap" class="navi-link font-light opacity-75">roadmap</a>
 	</div>
 	<div class="navi navi-rb">
-		{#if storyPath}
-			<a href="/" class="text-2xl font-light opacity-75">home</a>
-		{:else}
-			<a href="/story" class="text-2xl font-light opacity-75">story</a>
-		{/if}
+		<a href="/info" class="navi-link font-light opacity-75">info</a>
 	</div>
 </div>
 
-<div class="box box-size box-content">
-	<div class="flex flex-col items-center justify-center py-16 pb-32 bg-slate-500">
-		<slot />
-	</div>
-</div>
+<PageTransition url={$page.url.href}>
+	<slot />
+</PageTransition>
