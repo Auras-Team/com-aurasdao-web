@@ -1,4 +1,6 @@
 <script lang="ts">
+	import type { Unsubscriber } from 'svelte/store';
+
 	import { onDestroy, onMount } from 'svelte';
 	import { browser } from '$app/env';
 	import { fade } from 'svelte/transition';
@@ -7,9 +9,8 @@
 	import { nearWallet } from '$lib/store/near-wallet';
 	import { swapTransition } from '$lib/utility/swap-stores';
 
-	import type { Unsubscriber } from 'svelte/store';
+	import TokenList from '$lib/part/token-list.svelte';
 
-	let loaded: Boolean = false;
 	let account: string | null = null;
 
 	const enum State {
@@ -20,12 +21,13 @@
 
 	const swapper = swapTransition(State.Loading);
 	const state = swapper.state;
-	// TODO Next: Setup Account login
 
 	let unsubState: Unsubscriber | null = null;
 
 	onMount(() => {
 		if (!browser) return;
+		if (unsubState) return;
+
 		if (nearWallet.isSignedIn()) {
 			swapper.swapTo(State.User);
 			console.log('set user');
@@ -54,8 +56,9 @@
 		transition:fade|local={{ duration: 120 }}
 	>
 		<h1 class="text-6xl font-light py-6 opacity-75">guest</h1>
+		<p class="p-6">Please connect your near acocunt to mint.</p>
 		<button
-			class="btn btn-slate w-full"
+			class="btn btn-slate w-1/2"
 			on:click={async () => {
 				console.log('requestSignIn');
 				await nearWallet.requestSignIn(`${$page.url}`, ['nft_mint']);
@@ -66,28 +69,10 @@
 	</div>
 {:else if $state == State.User}
 	<div
-		class="pointer-input w-full"
+		class="flex flex-col items-center justify-center text-center w-full h-full"
 		on:outroend={swapper.onOutro}
 		transition:fade|local={{ duration: 120 }}
 	>
-		<h1 class="text-6xl font-light py-6 opacity-75">user</h1>
-		<button class="btn btn-slate w-full">{account}</button>
+		<TokenList {account} />
 	</div>
 {/if}
-
-<style>
-	.pointer-input {
-		pointer-events: all;
-	}
-	.btn {
-		@apply py-2 px-2 rounded;
-	}
-	.btn-slate {
-		@apply bg-slate-50 bg-opacity-20;
-		transition: all 0.1s ease-in-out;
-	}
-	.btn-slate:hover {
-		@apply bg-opacity-30;
-		transform: scale(0.99);
-	}
-</style>

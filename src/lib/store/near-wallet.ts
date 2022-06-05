@@ -6,6 +6,13 @@ import type { Writable } from 'svelte/store';
 import { connect as nearConnect } from 'near-api-js';
 import { keyStores, WalletConnection } from 'near-api-js';
 
+export interface MintState {
+	cost: number;
+	limit: number;
+	count: number;
+	tokens: [];
+}
+
 // Note: This is going to get messy
 const nearConfigKey = 'arc:near:config';
 const nearRedirectKey = 'arc:near:redirect';
@@ -104,7 +111,7 @@ export const isSignedIn = (): boolean => {
 	return conn != null ? conn.isSignedIn() : false;
 };
 
-export const account = (): AccountWallet => {
+export const getAccount = (): AccountWallet => {
 	const conn = get(connection);
 	if (conn && conn.isSignedIn()) {
 		return conn.account();
@@ -189,10 +196,11 @@ export const connect = async (config: NearConfig): Promise<WalletConnection | nu
 export const nearWallet = Object.freeze({
 	connect,
 	connection,
-	isSignedIn,
-	account,
+	getConfig,
+	getAccount,
 	getAccountId,
 	signOut,
+	isSignedIn,
 	requestSignIn
 });
 

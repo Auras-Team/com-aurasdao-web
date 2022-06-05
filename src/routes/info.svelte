@@ -1,18 +1,18 @@
-<div class="flex flex-col w-full h-4/5 pb-8 pointer-input">
-	<div class="flex flex-none h-14 flex-col justify-center">
-		<h1 class="text-6xl font-light opacity-70">info</h1>
+<div class="flex flex-col w-full max-w-2xl h-full md:h-4/5 pointer-input">
+	<div class="flex flex-none h-6 sm:h-10 md:h-14 flex-col justify-center">
+		<h1 class="text-5xl sm:text-6xl font-light opacity-70">info</h1>
 	</div>
-	<div class="flex flex-grow flex-col px-6 justify-center">
+	<div class="flex flex-grow flex-col px-1 sm:px-6 justify-center">
 		<div class="frame frame-slate">
-			<p class="text-2xl font-light px-16 py-2 opacity-80">
+			<p class="text-2xl font-light px-2 md:px-8 py-1 sm:py-2 opacity-80">
 				Energy can not be created or destroyed, it can only transform.
 			</p>
-			<p class="text-2xl font-light px-16 py-2 opacity-80">
+			<p class="text-2xl font-light px-2 md:px-8 py-1 sm:py-2 opacity-80">
 				Auras are an experimental project, allowing users to send energy across the internet.
 			</p>
 		</div>
 	</div>
-	<div class="flex flex-none h-14 flex-row justify-around px-16">
+	<div class="flex flex-none h-6 sm:h-10 md:h-14 flex-row justify-around px-16">
 		<div>
 			<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 50 50">
 				<path
