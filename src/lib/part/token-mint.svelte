@@ -10,7 +10,9 @@
 
 	export let account: string | null;
 
+	let mintSet: boolean = false;
 	let errorSet: boolean = true;
+
 	let errorMsg: string | null = null;
 
 	let mintState: MintState | null = null;
@@ -37,6 +39,7 @@
 					mintState = data;
 					errorMsg = null;
 					errorSet = false;
+					mintSet = $page.url.searchParams.get('transactionHashes') != null;
 				},
 				(reject) => {
 					console.log('====> nft_mint_state > reject');
@@ -101,6 +104,7 @@
 			});
 	};
 
+	$: hash = $page.url.searchParams.get('transactionHashes');
 	$: count = mintState ? mintState.count : 0;
 	$: limit = mintState ? mintState.limit : 0;
 </script>
@@ -123,6 +127,31 @@
 			>
 				<span>×</span>
 			</button>
+		</div>
+	</div>
+{:else if mintSet}
+	<div class="box box-size box-nessage pointer-input ">
+		<div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-teal-600 ">
+			<span class="text-xl inline-block mr-5 align-middle">
+				<i class="fas fa-bell" />
+			</span>
+			<span class="inline-block align-middle mr-8">
+				You have
+				<a
+					class="transition-all underline hover:font-bold"
+					href="https://explorer.testnet.near.org/transactions/{hash}"
+					target="_blank"
+				>
+					minted an aura
+				</a>
+				and have {limit} mints remaining.
+			</span>
+			<a
+				href="/token"
+				class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none"
+			>
+				<span>×</span>
+			</a>
 		</div>
 	</div>
 {/if}
@@ -158,8 +187,13 @@
 			</div>
 		</div>
 		<div class="flex flex-none h-6 sm:h-10 md:h-14 p-4 flex-col justify-center">
-			<div class="flex flex-none pt-6 flex-row justify-center">
-				<p class="text-xs">Maximum of 5 mints per wallet</p>
+			<div class="flex flex-none pt-8 flex-col justify-center">
+				{#if count > 0}
+					<p class="text-xs">you own <span class="text-sm">{count}</span> auras and</p>
+					<p class="text-xs">have <span class="text-sm">{limit}</span> mints remaining</p>
+				{:else}
+					<p class="text-xs">Maximum of 5 mints per wallet</p>
+				{/if}
 			</div>
 			<div class="flex flex-none w-full max-w-sm mx-auto p-3 flex-row justify-around">
 				<p class="">&nbsp;</p>
