@@ -37,16 +37,24 @@
 </div>
 <div class="box box-size box-navi">
 	<div class="navi navi-lt">
-		<a href="/token" class="navi-link font-light opacity-75">mint</a>
+		<a href="/token" class="navi-link w-24 text-center">
+			<p class="font-light opacity-75">mint</p>
+		</a>
 	</div>
 	<div class="navi navi-rt">
-		<a href="/" class="navi-link font-light opacity-75">story</a>
+		<a href="/" class="navi-link w-24 text-center">
+			<p class="font-light opacity-75">story</p>
+		</a>
 	</div>
 	<div class="navi navi-lb">
-		<a href="/roadmap" class="navi-link font-light opacity-75">roadmap</a>
+		<a href="/roadmap" class="navi-link w-44 text-center">
+			<p class="font-light opacity-75">roadmap</p>
+		</a>
 	</div>
 	<div class="navi navi-rb">
-		<a href="/info" class="navi-link font-light opacity-75">info</a>
+		<a href="/info" class="navi-link w-24 text-center">
+			<p class="font-light opacity-75">info</p>
+		</a>
 	</div>
 </div>
 
