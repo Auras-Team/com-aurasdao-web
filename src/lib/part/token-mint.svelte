@@ -186,7 +186,7 @@
 				{/if}
 			</div>
 		</div>
-		<div class="flex flex-none h-6 sm:h-10 md:h-14 p-4 flex-col justify-center">
+		<div class="flex flex-none h-6 sm:h-10 md:h-14 p-4 flex-col justify-center pointer-none">
 			<div class="flex flex-none pt-8 flex-col justify-center">
 				{#if count > 0}
 					<p class="text-xs">you own <span class="text-sm">{count}</span> auras and</p>

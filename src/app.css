@@ -144,6 +144,9 @@ body {
 	line-height: 2.5rem;
 }
 
+.pointer-none {
+	pointer-events: none;
+}
 .pointer-input {
 	pointer-events: all;
 }
@@ -195,5 +198,6 @@ body {
 	.navi {
 		width: 35vw;
 		height: 12vh;
+		background-color: aqua;
 	}
 }
