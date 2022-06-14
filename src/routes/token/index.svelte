@@ -56,7 +56,7 @@
 		transition:fade|local={{ duration: 120 }}
 	>
 		<h1 class="text-6xl font-light py-6 opacity-75">guest</h1>
-		<p class="p-6">Please connect your near acocunt to mint.</p>
+		<p class="p-6">Please connect your near account to mint.</p>
 		<button
 			class="btn btn-slate w-1/2"
 			on:click={async () => {

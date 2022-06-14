@@ -4,7 +4,7 @@
 type Fetch = (input: RequestInfo, init?: RequestInit) => Promise<Response>;
 
 // Defines a short hand for the interface to near wallet accounts.
-// Ref. ConnectedWalletAccount - Central api for near acocunts and contract calls.
+// Ref. ConnectedWalletAccount - Central api for near acocunt and contract calls.
 // https://near.github.io/near-api-js/classes/walletaccount.connectedwalletaccount.html
 
 type AccountWallet = import('near-api-js').ConnectedWalletAccount | null;
