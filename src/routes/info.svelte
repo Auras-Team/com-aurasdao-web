@@ -8,7 +8,7 @@
 				Energy can not be created or destroyed, it can only transform.
 			</p>
 			<p class="text-2xl font-light px-2 md:px-8 py-1 sm:py-2 opacity-80">
-				Auras are an experimental project, allowing users to exchange energy across the internet.
+				Auras is an experimental project, allowing users to exchange energy across the internet.
 			</p>
 		</div>
 	</div>

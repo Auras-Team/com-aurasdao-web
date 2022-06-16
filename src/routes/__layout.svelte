@@ -42,7 +42,7 @@
 		</a>
 	</div>
 	<div class="navi navi-rt">
-		<a href="/" class="navi-link w-24 text-center">
+		<a href="/story" class="navi-link w-24 text-center">
 			<p class="font-light opacity-75">story</p>
 		</a>
 	</div>
